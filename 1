@@ -1,0 +1,57 @@
+saldo_usuario = 5000
+
+def consultar_saldo():
+    print(f"Su saldo actual es: {saldo_usuario}")
+
+def retirar_dinero():
+    global saldo_usuario
+    cantidad = float(input("Ingrese la cantidad a retirar: "))
+    if saldo_usuario >= cantidad:
+        saldo_usuario -= cantidad
+        print(f"¡Retiro exitoso! Nuevo saldo: {saldo_usuario}")
+    else:
+        print("Saldo insuficiente para realizar el retiro.")
+
+def depositar_dinero():
+    global saldo_usuario
+    cantidad = float(input("Ingrese la cantidad a depositar: "))
+    saldo_usuario += cantidad
+    print(f"¡Depósito exitoso! Nuevo saldo: {saldo_usuario}")
+
+def transferir_dinero():
+    global saldo_usuario
+    cantidad = float(input("Ingrese la cantidad a transferir: "))
+    cuenta_destino = input("Ingrese el número de cuenta destino: ")
+    print(f"Transferencia de {cantidad} a la cuenta {cuenta_destino} realizada.")
+    saldo_usuario -= cantidad
+
+def principal():
+    print("Bienvenido/a al banco virtual")
+    while True:
+        print(" Opciones disponibles:")
+        print("1. Consultar saldo")
+        print("2. Retirar dinero")
+        print("3. Depositar dinero")
+        print("4. Transferir dinero a otra cuenta")
+        print("5. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == '1':
+            consultar_saldo()
+        elif opcion == '2':
+            retirar_dinero()
+        elif opcion == '3':
+            depositar_dinero()
+        elif opcion == '4':
+            transferir_dinero()
+        elif opcion == '5':
+            print("¡Gracias por utilizar nuestro simulador de cajero automático!")
+            break
+        else:
+            print("Opción no válida.")
+
+
+
+if __name__ == "__main__":
+    principal()
